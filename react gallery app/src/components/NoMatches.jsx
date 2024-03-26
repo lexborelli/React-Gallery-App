@@ -1,5 +1,7 @@
 import React from "react"; 
 
+// If no matches are found by the search, display a friendly user message to tell the user there are no matches.
+
 const NoMatches = () => {
    
     return (
