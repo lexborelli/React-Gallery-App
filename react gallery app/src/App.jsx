@@ -11,6 +11,7 @@ import apiKey from './config.js';
 import Nav from './components/Nav';
 import Search from './components/Search';
 import PhotoList from './components/PhotoList';
+import NotFound from "./components/NotFound";
 
 
 //Main App
@@ -74,24 +75,26 @@ function App() {
       {/*Navigation component*/}
 
       <Nav />
+
       {/**Used a ternary statement, inside the parentheses I set the condition to  loading, if the loading state is true or while the photos are loading, a paragraph will be rendered displaying "loading". If the loading state is false the routes will be rendered */}
       {
         (loading)
         ? <p>Loading...</p>
         : <Routes>
 
-            {/* home route will be redirected to tropica path */}
+            {/* home route will be redirected to tropical path, added "replace" to navigate through history stack */}
 
-            <Route path="/" element={<Navigate to="/tropical" />} /> 
+            <Route path="/" element={<Navigate replace to="/tropical" />} /> 
 
-            {/* Tropical, waterfalls and beaches are 3 static routes; These render the PhotoList component including the search query.*/}
+            {/* Tropical, waterfalls and beaches are 3 static routes; These render the PhotoList component including the search query. Added a route at the end for 404 Error when a page cannot be found.*/}
 
             <Route path="/tropical" element={<PhotoList data={photo} />} />
             <Route path="/waterfalls" element={<PhotoList data={photo} />} />
             <Route path="/beaches" element={<PhotoList data={photo} />} />
             <Route path="/search/:query" element={<PhotoList data={photo} />} />
-
+            <Route path= "*" element={<NotFound />} />
            </Routes>
+           
 
         
         }
