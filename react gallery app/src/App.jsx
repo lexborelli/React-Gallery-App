@@ -19,16 +19,19 @@ function App() {
   //useState Hooks
  const [photo, setPhotos] = useState([]);
  const [query, setQuery] = useState("");
+ const [loading, setLoading] = useState(false);
 
  const location = useLocation();
 
  // Using axios to fetch date from flickr API, changed URL to template literal to embed the value of the quer into the URL using interpolation, added query to the dependency array so the data can be fetched each time the query state changes
 
  const fetchData = (query) => {
+  setLoading(true); 
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
       //handle success
       setPhotos(response.data.photos.photo);
+      setLoading(false);
     })
     .catch(error => {
       // handle error
@@ -71,7 +74,11 @@ function App() {
       {/*Navigation component*/}
 
       <Nav />
-        <Routes>
+      {/**Used a ternary statement, inside the parentheses I set the condition to  loading, if the loading state is true or while the photos are loading, a paragraph will be rendered displaying "loading". If the loading state is false the routes will be rendered */}
+      {
+        (loading)
+        ? <p>Loading...</p>
+        : <Routes>
 
             {/* home route will be redirected to tropica path */}
 
@@ -84,7 +91,11 @@ function App() {
             <Route path="/beaches" element={<PhotoList data={photo} />} />
             <Route path="/search/:query" element={<PhotoList data={photo} />} />
 
-        </Routes>
+           </Routes>
+
+        
+        }
+
     </div>
   );
 }
