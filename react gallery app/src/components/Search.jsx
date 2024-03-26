@@ -1,16 +1,16 @@
-import React, { useState } from "react"; 
+import React, { useRef } from "react"; 
 
 const Search = (props) => {
 
 //This component has a searchText that is specific to the componenet and gets update on the onChange event w/ the text the user types into the input field
 
-const [searchText, setSearchtext] = useState('');
+const searchText = useRef(null);
 
 
-//This handleSubmit function is called when the form is submitted, handleSubmit is preventing the default behavior of the form 
+//This handleSubmit function is called when the form is submitted, handleSubmit is preventing the default behavior of the form, reference the input of the user and pass changeQuery searchText.current.value.
 const handleSubmit = e => {
     e.preventDefault();
-    props.changeQuery(searchText); 
+    props.changeQuery(searchText.current.value); 
     e.currentTarget.reset();
 
 }
@@ -18,7 +18,7 @@ const handleSubmit = e => {
     return (
         <form className="search-form" onSubmit={e => handleSubmit(e)} >
             <input type="search"
-                   onChange={e => setSearchtext(e.target.value)}
+                   ref={searchText}
                    name="search"
                    placeholder="Search for an Image"
                    required />

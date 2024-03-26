@@ -22,7 +22,7 @@ function App() {
 
  const location = useLocation();
 
- // Using axios to fetch date from flickr API 
+ // Using axios to fetch date from flickr API, changed URL to template literal to embed the value of the quer into the URL using interpolation, added query to the dependency array so the data can be fetched each time the query state changes
 
  const fetchData = (query) => {
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
