@@ -11,3 +11,6 @@ Utilizing Vite I set up the initial project, Then:
 - Included a 404-like error route that displays a user friendly 404 error page when a URL does not match an existing route. 
 - Added a loading indicator that displays each time the app fetches new data
 - If no matches were found by the search, displayed a friendly user message to inform the user there were no matches. 
+
+Deployed my application using Netlify, My site is:
+https://lexborellireactgallery.netlify.app/
