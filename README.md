@@ -12,5 +12,4 @@ Utilizing Vite I set up the initial project, Then:
 - Added a loading indicator that displays each time the app fetches new data
 - If no matches were found by the search, displayed a friendly user message to inform the user there were no matches. 
 
-Deployed my application using Netlify, My site is:
-https://lexborellireactgallery.netlify.app/
+
