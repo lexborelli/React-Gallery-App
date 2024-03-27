@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import './App.css';
@@ -23,6 +23,8 @@ function App() {
  const [loading, setLoading] = useState(false);
 
  const location = useLocation();
+ let navigate = useNavigate();
+
 
  // Using axios to fetch date from flickr API, changed URL to template literal to embed the value of the quer into the URL using interpolation, added query to the dependency array so the data can be fetched each time the query state changes
 
@@ -41,25 +43,27 @@ function App() {
 
  }
 
- // Allowing search component to update query state & call the fetchData  function and pass it the query entered by the user
+ // Allowing search component to update query state & call the fetchData  function and pass it the query entered by the user. Utilized navigate to create the path that would be inserted into the URL
 
  const handleQueryChange = (searchText) => {
   setQuery(searchText); 
-  fetchData(searchText);
+  navigate(`search/${searchText}`);
 }
 
-// we are using the useEffect hook to fetch data from the API when the component mounts & uselocation hook here to return the current location of the url the `pathname` of the specific link the user clicks is returned as a string, "substring(1)" method removes the forward slash from the pathname. 
+// we are using the useEffect hook to fetch data from the API when the component mounts & uselocation hook here to return the current location of the url the `pathname` of the specific link the user clicks is returned as a string, "substring(1)" method removes the forward slash from the pathname. else If includes when the user inputs a value into the search componenet, The path will change to what the user inputed
 
  useEffect(() => {
-  const path = location.pathname.substring(1);
+  let path = location.pathname.substring(1);
 
-    if (path === "tropical") {
-      fetchData("tropical");
-    } if (path === "waterfalls") {
-      fetchData("waterfalls"); 
-    } else if (path === "beaches") {
-      fetchData("beaches");
-    } 
+  if (path === "tropical") {
+    fetchData("tropical");
+  } if (path === "waterfalls") {
+    fetchData("waterfalls"); 
+  } if (path === "beaches") {
+    fetchData("beaches");
+  } else if (path.includes("search/")) {
+      path = location.pathname.substring(8);
+    } fetchData(path); 
  }, [location]);
  
 

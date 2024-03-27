@@ -9,10 +9,10 @@ const searchText = useRef(null);
 
 //This handleSubmit function is called when the form is submitted, handleSubmit is preventing the default behavior of the form, reference the input of the user and pass changeQuery searchText.current.value.
 const handleSubmit = e => {
+
     e.preventDefault();
     props.changeQuery(searchText.current.value); 
     e.currentTarget.reset();
-
 }
     
     return (
