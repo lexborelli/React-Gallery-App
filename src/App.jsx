@@ -5,7 +5,8 @@ import axios from "axios";
 import './App.css';
 
 //importing my API Key 
-import apiKey from './config.js';
+const apiKey = import.meta.env.VITE_API_KEY;
+//import apiKey from './config.js';
 
 //App components
 import Nav from './components/Nav';

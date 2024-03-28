@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -24,5 +25,10 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "react-router-dom": "^6.22.3",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "This project, uses the in-demand React library to create an image gallery app.\r The app is built in the style of a modern single-page application to keep it fast, modular, and in sync with current web development trends.\r I used JSX to write the markup-like syntax directly in my JavaScript files and managed the state in a container component that passes data down to the reusable stateless components.",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
