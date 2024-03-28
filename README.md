@@ -1,3 +1,6 @@
+You can see a live version of my site below: 
+https://66059ca7c980d436a78c9dfe--lexborellireactgallery.netlify.app/
+
 This project, uses the in-demand React library to create an image gallery app.
 The app is built in the style of a modern single-page application to keep it fast, modular, and in sync with current web development trends.
 I used JSX to write the markup-like syntax directly in my JavaScript files and managed the state in a container component that passes data down to the reusable stateless components. 
